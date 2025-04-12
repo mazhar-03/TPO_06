@@ -13,23 +13,19 @@ import java.util.Date;
 @Service
 public class FakeDataService {
 
-    public List<PersonDTO> generateData(int quantity, String language, List<String> fields) {
-        Faker faker = new Faker(new Locale(language)); // Initialize Faker with the given locale
+    public List<PersonDTO> generateData(int numOfData, String language, List<String> fields) {
+        Faker faker = new Faker(new Locale(language));
         List<PersonDTO> people = new ArrayList<>();
 
-        for (int i = 0; i < quantity; i++) {
+        for (int i = 0; i < numOfData; i++) {
             PersonDTO person = new PersonDTO();
 
-            // Basic fields
+            //basuic
             person.setFirstName(faker.name().firstName());
             person.setLastName(faker.name().lastName());
+            person.setDateOfBirth(faker.timeAndDate().birthday(1, 99, "dd/MM/yyyy"));
 
-            // Generate a random birthday and format it to a string (dd-MM-yyyy)
-            Date birthDate = faker.date().birthday();  // Correct method for generating a birthdate
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-            person.setDateOfBirth(sdf.format(birthDate)); // Set the formatted birthdate
-
-            // Add additional fields based on user selection
+            //additional
             if (fields.contains("address")) {
                 person.setAddress(faker.address().fullAddress());
             }
@@ -52,13 +48,12 @@ public class FakeDataService {
                 person.setSex(faker.options().option("Male", "Female"));
             }
             if (fields.contains("maritalStatus")) {
-                person.setMaritalStatus(faker.options().option("Single", "Married"));
+                person.setMaritalStatus(faker.options().option("Single", "Married", "Divorced"));
             }
             if (fields.contains("kidsNumber")) {
-                person.setKidsNumber(faker.number().numberBetween(0, 5));
+                person.setKidsNumber(faker.number().numberBetween(0, 3));
             }
 
-            // Add the generated person to the list
             people.add(person);
         }
 
