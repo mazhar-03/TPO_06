@@ -5,7 +5,6 @@ import com.example.demo.service.FakeDataService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -82,20 +81,6 @@ public class FakeDataController {
     private Map<String, String> getTranslatedHeaders(String lang) {
         Map<String, String> headers = new HashMap<>();
         switch (lang) {
-            case "en":
-                headers.put("firstName", "First Name");
-                headers.put("lastName", "Last Name");
-                headers.put("dateOfBirth", "Date of Birth");
-                headers.put("address", "Address");
-                headers.put("university", "University");
-                headers.put("country", "Nationality");
-                headers.put("job", "Job");
-                headers.put("email", "Email");
-                headers.put("phone", "Phone");
-                headers.put("sex", "Sex");
-                headers.put("maritalStatus", "Marital Status");
-                headers.put("kidsNumber", "Number of Kids");
-                break;
             case "sv":
                 headers.put("firstName", "Förnamn");
                 headers.put("lastName", "Efternamn");

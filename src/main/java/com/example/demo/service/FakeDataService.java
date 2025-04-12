@@ -3,12 +3,10 @@ package com.example.demo.service;
 import com.example.demo.dto.PersonDTO;
 import net.datafaker.Faker;
 import org.springframework.stereotype.Service;
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Date;
+
 
 @Service
 public class FakeDataService {
